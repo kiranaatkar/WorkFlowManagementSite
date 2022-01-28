@@ -12,15 +12,22 @@ function NewProject() {
   function displayTasks(tasks) {
     return tasks.map((task, i) => {
       return (
-        <div key={i} id={task.id}>
-          <textarea
-            onChange={(e) => updateTask(e)}
-            placeholder={`Task ${i + 1}`}
-            value={task.info}
-          ></textarea>
-          <button id={task.id} onClick={(e) => removeTask(e)}>
-            x
-          </button>
+        <div key={i} id={task.id} className="task">
+          <label className="form-field task">
+            <textarea
+              onChange={(e) => updateTask(e)}
+              value={task.info}
+              onBlur={(e) => handleBlur(e)}
+            ></textarea>
+            <span className="placeholder">{`Task ${i + 1}`}</span>
+            <button
+              id={task.id}
+              onClick={(e) => removeTask(e)}
+              className="form-btn"
+            >
+              x
+            </button>
+          </label>
         </div>
       );
     });
@@ -33,12 +40,12 @@ function NewProject() {
   }
 
   function updateTask(e) {
-    const newTasks = [...tasks];
-    const targetIndex = newTasks.findIndex(
-      (task) => task.id === e.target.parentNode.id
+    const targetIndex = tasks.findIndex(
+      (task) => task.id === e.target.parentNode.parentNode.id
     );
-    newTasks[targetIndex].info = e.target.value;
-    updateTasks(newTasks);
+
+    tasks[targetIndex].info = e.target.value;
+    updateTasks([...tasks]);
   }
 
   function removeTask(e) {
@@ -46,53 +53,70 @@ function NewProject() {
     updateTasks(tasks.filter((task) => task.id !== e.target.id));
   }
 
-  function clearFields(e) {
-    e.preventDefault();
+  function clearFields() {
     setTitle("");
     setDueDate(null);
     setDescription("");
     updateTasks([]);
   }
 
-  function onSubmit() {}
+  function onSubmit(e) {
+    e.preventDefault();
+  }
+
+  function handleBlur(e) {
+    if (e.target.value) e.target.classList.add("blurred");
+    else e.target.classList.remove("blurred");
+  }
 
   return (
     <div>
       <h2>New Project</h2>
       <form className="form-wrapper">
-        <input
-          type="text"
-          id="project-title"
-          placeholder="Project Title"
-          className="form-item"
-          onChange={(e) => setTitle(e.target.value)}
-        ></input>
+        <label className="form-field">
+          <input
+            type="text"
+            id="title"
+            onChange={(e) => setTitle(e.target.value)}
+            onBlur={(e) => handleBlur(e)}
+          ></input>
+          <span className="placeholder">Project Title</span>
+        </label>
 
-        <label htmlFor="project-due-date">Due:</label>
-        <input
-          type="text"
-          onFocus={(e) => (e.target.type = "date")}
-          id="project-due-date"
-          name="project-due-date"
-          placeholder="Due Date"
-          min={TODAY.toISOString().split("T")[0]}
-          className="form-item"
-          onChange={(e) => setDueDate(e.target.value)}
-        ></input>
-
-        <textarea
-          type="text"
-          placeholder="Project Overview"
-          id="project-description"
-          className="form-item"
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
+        <label className="form-field">
+          <input
+            type="text"
+            onFocus={(e) => (e.target.type = "date")}
+            min={TODAY.toISOString().split("T")[0]}
+            onChange={(e) => setDueDate(e.target.value)}
+            onBlur={(e) => handleBlur(e)}
+          ></input>
+          <span className="placeholder">Due Date</span>
+        </label>
+        <label className="form-field">
+          <textarea
+            type="text"
+            onChange={(e) => setDescription(e.target.value)}
+            onBlur={(e) => handleBlur(e)}
+          ></textarea>
+          <span className="placeholder">Project Overview</span>
+        </label>
 
         {displayTasks(tasks)}
 
-        <button onClick={(e) => addTask(e)}> Add Task </button>
-        <button onClick={() => onSubmit}>Submit</button>
-        <button onClick={(e) => clearFields(e)}>Clear Fields</button>
+        <div className="form-btns">
+          <button onClick={(e) => addTask(e)} className="form-btn add">
+            Add Task
+          </button>
+          <div>
+            <button onClick={(e) => clearFields} className="form-btn clear">
+              Clear All
+            </button>
+            <button onClick={(e) => onSubmit(e)} className="form-btn submit">
+              Submit
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );
