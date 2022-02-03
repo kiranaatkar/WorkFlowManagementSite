@@ -6,7 +6,7 @@ const TODAY = new Date();
 
 function NewProject() {
   const [title, setTitle] = useState("");
-  const [dueDate, setDueDate] = useState(null);
+  const [dueDate, setDueDate] = useState("");
   const [description, setDescription] = useState("");
   const [tasks, updateTasks] = useState([]);
   const myAPI = new Networking();
@@ -46,9 +46,10 @@ function NewProject() {
     updateTasks(tasks.filter((task) => task.id !== e.target.id));
   }
 
-  function clearFields() {
+  function clearFields(e) {
+    e.preventDefault();
     setTitle("");
-    setDueDate(null);
+    setDueDate("");
     setDescription("");
     updateTasks([]);
   }
@@ -61,8 +62,12 @@ function NewProject() {
     updateTasks([...tasks]);
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
+    const data = { title, dueDate, description, tasks };
+    const response = await myAPI.postNewProject(data);
+    console.log(response);
+    clearFields(e);
   }
 
   function handleBlur(e) {
@@ -78,6 +83,7 @@ function NewProject() {
           <input
             type="text"
             id="title"
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
             onBlur={(e) => handleBlur(e)}
           ></input>
@@ -87,6 +93,7 @@ function NewProject() {
         <label className="form-field">
           <input
             type="text"
+            value={dueDate}
             onFocus={(e) => (e.target.type = "date")}
             min={TODAY.toISOString().split("T")[0]}
             onChange={(e) => setDueDate(e.target.value)}
@@ -97,6 +104,7 @@ function NewProject() {
         <label className="form-field">
           <textarea
             type="text"
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
             onBlur={(e) => handleBlur(e)}
           ></textarea>
@@ -110,7 +118,7 @@ function NewProject() {
             Add Task
           </button>
           <div>
-            <button onClick={(e) => clearFields} className="form-btn clear">
+            <button onClick={(e) => clearFields(e)} className="form-btn clear">
               Clear All
             </button>
             <button onClick={(e) => onSubmit(e)} className="form-btn submit">

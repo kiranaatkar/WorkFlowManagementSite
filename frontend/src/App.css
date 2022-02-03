@@ -25,8 +25,6 @@
 }
 
 .display-wrapper {
-  /* border: 1px solid black;
-  flex: 1; */
   margin-top: 50px;
   margin-left: 20px;
 }
@@ -41,7 +39,7 @@
 
 .new-project-title {
   color: #ff6600e1;
-  text-align: center;
+  text-align: left;
   font-size: xx-large;
 }
 

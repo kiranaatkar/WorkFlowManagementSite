@@ -31,8 +31,8 @@ function SideNavBar(props) {
     <div className="side-nav-wrapper">
       <h3 className="sidebar-title">Projects</h3>
       <div className="sidebar-projects-wrapper">
+        <button className="sidebar-project-btn">+ Create</button>
         {getProjectsComponentList(projects)}
-        <button className="sidebar-project-btn">+ New Project</button>
       </div>
     </div>
   );

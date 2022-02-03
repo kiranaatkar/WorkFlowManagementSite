@@ -10,9 +10,10 @@ const db = new DB("./projects.db");
 await db.query(
   `CREATE TABLE projects (
     project_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    team_id,
+    team_id integer,
     title TEXT NOT NULL,
     due_date DATETIME NOT NULL,
+    description TEXT NOT NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL
   )`
