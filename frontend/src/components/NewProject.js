@@ -71,7 +71,7 @@ function NewProject() {
 
   return (
     <div>
-      <h2>New Project</h2>
+      <h2 className="new-project-title">New Project</h2>
       <form className="form-wrapper">
         <label className="form-field">
           <input

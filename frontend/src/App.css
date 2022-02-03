@@ -9,7 +9,7 @@
   position: fixed;
   flex: 1;
   width: 100vw;
-  background-color: #ff6600;
+  background-color: #ff6600c7;
 }
 
 .main-content-wrapper {
@@ -28,6 +28,7 @@
   /* border: 1px solid black;
   flex: 1; */
   margin-top: 50px;
+  margin-left: 20px;
 }
 
 /*  New project */
@@ -36,6 +37,12 @@
   display: flex;
   flex-direction: column;
   width: 50vw;
+}
+
+.new-project-title {
+  color: #ff6600e1;
+  text-align: center;
+  font-size: xx-large;
 }
 
 .form-field {
@@ -135,6 +142,45 @@
   background-color: rgb(255, 255, 255);
   color: #ff66009f;
   border: 1px solid #ff66009f;
+}
+
+/* Side bar */
+
+.sidebar-projects-wrapper {
+  margin-top: 10px;
+  height: 90%;
+  width: 15vw;
+  overflow: auto;
+}
+
+.sidebar-title {
+  color: #ff6600e1;
+  text-align: center;
+  font-size: x-large;
+}
+
+.sidebar-project-btn {
+  background: white;
+  border-right: none;
+  border-left: none;
+  border-top: 1px solid #ff66009f;
+  border-bottom: none;
+  padding: 5px;
+  width: 99%;
+  color: #ff6600e1;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sidebar-project-btn:hover {
+  background-color: #ff66009f;
+  color: white;
+  border-right: none;
+  border-left: none;
+  border-top: 1px solid #ff66009f;
+  border-bottom: 1px solid #ff66009f;
 }
 
 *,

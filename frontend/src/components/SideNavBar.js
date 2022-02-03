@@ -8,7 +8,7 @@ function SideNavBar(props) {
 
   useEffect(() => {
     fetchData();
-  }, []); // ComponentDidMount
+  }); // ComponentDidMount
 
   async function fetchData() {
     const json = await myAPI.getAllProjects();
@@ -18,7 +18,9 @@ function SideNavBar(props) {
   function getProjectsComponentList(projects) {
     if (projects.length) {
       return projects.map((project) => (
-        <button key={project.project_id}> {project.title}</button>
+        <button key={project.project_id} className="sidebar-project-btn">
+          {project.title}
+        </button>
       ));
     } else {
       return <h3>No projects yet</h3>;
@@ -27,8 +29,10 @@ function SideNavBar(props) {
 
   return (
     <div className="side-nav-wrapper">
-      <div className="projects-nav-wrapper">
+      <h3 className="sidebar-title">Projects</h3>
+      <div className="sidebar-projects-wrapper">
         {getProjectsComponentList(projects)}
+        <button className="sidebar-project-btn">+ New Project</button>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ function App() {
     <div className="App-wrapper">
       <div className="top-nav-wrapper"></div>
       <div className="main-content-wrapper">
-        <div>
+        <div className="side-nav">
           <SideNavBar />
         </div>
         <div className="display-wrapper">
