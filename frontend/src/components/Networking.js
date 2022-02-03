@@ -4,6 +4,8 @@ class Networking {
     const json = await response.json();
     return json;
   }
+
+  async postNewProject(data) {}
 }
 
 export default Networking;

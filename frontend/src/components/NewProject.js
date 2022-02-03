@@ -1,4 +1,5 @@
 import "../App.css";
+import Networking from "./Networking";
 import React, { useEffect, useState } from "react";
 
 const TODAY = new Date();
@@ -8,6 +9,7 @@ function NewProject() {
   const [dueDate, setDueDate] = useState(null);
   const [description, setDescription] = useState("");
   const [tasks, updateTasks] = useState([]);
+  const myAPI = new Networking();
 
   function displayTasks(tasks) {
     return tasks.map((task, i) => {
@@ -39,15 +41,6 @@ function NewProject() {
     updateTasks([...tasks, { id: randStr, info: "" }]);
   }
 
-  function updateTask(e) {
-    const targetIndex = tasks.findIndex(
-      (task) => task.id === e.target.parentNode.parentNode.id
-    );
-
-    tasks[targetIndex].info = e.target.value;
-    updateTasks([...tasks]);
-  }
-
   function removeTask(e) {
     e.preventDefault();
     updateTasks(tasks.filter((task) => task.id !== e.target.id));
@@ -58,6 +51,14 @@ function NewProject() {
     setDueDate(null);
     setDescription("");
     updateTasks([]);
+  }
+
+  function updateTask(e) {
+    const targetIndex = tasks.findIndex(
+      (task) => task.id === e.target.parentNode.parentNode.id
+    );
+    tasks[targetIndex].info = e.target.value;
+    updateTasks([...tasks]);
   }
 
   function onSubmit(e) {
