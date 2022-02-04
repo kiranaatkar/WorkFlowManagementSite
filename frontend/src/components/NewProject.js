@@ -64,10 +64,11 @@ function NewProject() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    const data = { title, dueDate, description, tasks };
-    const response = await myAPI.postNewProject(data);
-    console.log(response);
-    clearFields(e);
+    if (title && dueDate && description) {
+      const data = { title, dueDate, description, tasks };
+      const response = await myAPI.postNewProject(data);
+      clearFields(e);
+    }
   }
 
   function handleBlur(e) {

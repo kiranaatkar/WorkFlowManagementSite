@@ -18,7 +18,13 @@ function SideNavBar(props) {
   function getProjectsComponentList(projects) {
     if (projects.length) {
       return projects.map((project) => (
-        <button key={project.project_id} className="sidebar-project-btn">
+        <button
+          key={project.project_id}
+          className="sidebar-project-btn"
+          onClick={() =>
+            props.viewProject({ component: "project", props: project })
+          }
+        >
           {project.title}
         </button>
       ));
@@ -31,7 +37,14 @@ function SideNavBar(props) {
     <div className="side-nav-wrapper">
       <h3 className="sidebar-title">Projects</h3>
       <div className="sidebar-projects-wrapper">
-        <button className="sidebar-project-btn">+ Create</button>
+        <button
+          className="sidebar-project-btn"
+          onClick={() =>
+            props.viewProject({ component: "new-project", props: null })
+          }
+        >
+          + Create
+        </button>
         {getProjectsComponentList(projects)}
       </div>
     </div>
