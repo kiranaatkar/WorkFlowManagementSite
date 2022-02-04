@@ -46,26 +46,25 @@ async function postNewProject(server) {
   server.json("Project added", 200);
 }
 
-async function createTasksTable(tasks, projectID) {
+function createTasksTable(tasks, projectID) {
   const tableName = `project_${projectID}_tasks`;
-  await db.query(
-    `CREATE TABLE ? (
+  db.query(
+    `CREATE TABLE ${tableName} (
     task_id INTEGER PRIMARY KEY AUTOINCREMENT,
     description TEXT NOT NULL,
     due_date DATETIME,
-    complete BOOLEAN NOT NULL;
-  );`,
-    [tableName]
+    complete BOOLEAN NOT NULL
+  );`
   );
   tasks.forEach(async (task) => {
     const due_date = task.due_date ? task.due_date : null;
-    await db.query(
-      `INSERT INTO ? 
+    db.query(
+      `INSERT INTO ${tableName} 
       (description, due_date, complete)
       VALUES
       (?, ?, ?)
 ;`,
-      [tableName, task.info, due_date, 0]
+      [task.info, due_date, 0]
     );
   });
 }

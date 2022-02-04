@@ -4,12 +4,11 @@
 }
 
 .top-nav-wrapper {
-  border: 1px solid black;
   height: 50px;
   position: fixed;
   flex: 1;
   width: 100vw;
-  background-color: #ff6600c7;
+  background-color: #ed6f00;
 }
 
 .main-content-wrapper {
@@ -18,10 +17,11 @@
 }
 
 .side-nav-wrapper {
-  border: 1px solid black;
   width: 15vw;
-  margin-top: 50px;
+  margin-top: 45px;
   height: 100vh;
+  background-color: #ed6f00;
+  color: white;
 }
 
 .display-wrapper {
@@ -38,7 +38,7 @@
 }
 
 .new-project-title {
-  color: #ff6600e1;
+  color: #0cafa9;
   text-align: left;
   font-size: xx-large;
 }
@@ -52,7 +52,7 @@
 
 .form-field textarea,
 .form-field input {
-  border: 2px solid #ddd;
+  border: 2px solid #bed8cf;
   -webkit-appearance: none;
   -ms-appearance: none;
   -moz-appearance: none;
@@ -79,7 +79,7 @@
   padding: 5px;
   top: 10px;
   color: black;
-  border-color: #ff6600;
+  border-color: #0cafa9;
   transition-delay: 0.1s;
 }
 
@@ -88,7 +88,7 @@
   left: 12px;
   top: calc(50% + 10px);
   transform: translateY(-50%);
-  color: #aaa;
+  color: #bed8cf;
   transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
 }
 
@@ -98,7 +98,7 @@
 .form-field input:focus + .placeholder {
   top: 20px;
   font-size: 10px;
-  color: #ff6600;
+  color: #0cafa9;
   background: white;
   padding: 3px;
 }
@@ -121,11 +121,11 @@
 }
 
 .form-btn {
-  border: 1px solid #ff66009f;
+  border: 1px solid #bed8cf;
   padding: 1rem;
   margin-top: 10px;
   margin: 5px;
-  background: #ff66009f;
+  background: #bed8cf;
   color: white;
   cursor: pointer;
   text-align: center;
@@ -137,9 +137,9 @@
 }
 
 .form-btn:hover {
-  background-color: rgb(255, 255, 255);
-  color: #ff66009f;
-  border: 1px solid #ff66009f;
+  background-color: #0cafa9;
+  color: white;
+  border: 1px solid #bed8cf;
 }
 
 /* Side bar */
@@ -152,20 +152,20 @@
 }
 
 .sidebar-title {
-  color: #ff6600e1;
+  padding-top: 20px;
   text-align: center;
   font-size: x-large;
 }
 
 .sidebar-project-btn {
-  background: white;
+  background: #ed6f00;
   border-right: none;
   border-left: none;
-  border-top: 1px solid #ff66009f;
+  border-top: 1px solid white;
   border-bottom: none;
   padding: 5px;
   width: 99%;
-  color: #ff6600e1;
+  color: white;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
@@ -173,12 +173,12 @@
 }
 
 .sidebar-project-btn:hover {
-  background-color: #ff66009f;
-  color: white;
+  background-color: white;
+  color: #ed6f00;
   border-right: none;
   border-left: none;
-  border-top: 1px solid #ff66009f;
-  border-bottom: 1px solid #ff66009f;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 *,
