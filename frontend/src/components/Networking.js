@@ -5,6 +5,14 @@ class Networking {
     return json;
   }
 
+  async getProjectTasks(project_id) {
+    const response = await fetch(
+      `http://localhost:8080/projects/${project_id}/tasks`
+    );
+    const json = await response.json();
+    return json;
+  }
+
   async postNewProject(data) {
     const response = await fetch("http://localhost:8080/projects/add", {
       method: "POST",

@@ -8,11 +8,11 @@ function SideNavBar(props) {
 
   useEffect(() => {
     fetchData();
-  }); // ComponentDidMount
+  }, []); // ComponentDidMount
 
   async function fetchData() {
     const json = await myAPI.getAllProjects();
-    setProjects(json);
+    setProjects(json.projects);
   }
 
   function getProjectsComponentList(projects) {

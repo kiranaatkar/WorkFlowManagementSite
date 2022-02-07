@@ -12,6 +12,7 @@ app.use(abcCors());
 
 app
   .get("/projects", getAllProjects)
+  .get("/projects/:id/tasks", getProjectTasks)
   .post("/projects/add", postNewProject)
   .start({ port: PORT });
 
@@ -19,7 +20,14 @@ async function getAllProjects(server) {
   const projects = [
     ...db.query("SELECT * FROM projects ORDER BY due_date DESC").asObjects(),
   ];
-  await server.json(projects, 200);
+  await server.json({ projects }, 200);
+}
+
+async function getProjectTasks(server) {
+  const { id } = server.params;
+  const tableName = `project_${id}_tasks`;
+  const tasks = [...db.query(`SELECT * FROM project_${id}_tasks`).asObjects()];
+  await server.json({ tasks }, 200);
 }
 
 async function postNewProject(server) {
