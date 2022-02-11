@@ -126,7 +126,7 @@ function NewProject() {
               Clear All
             </button>
             <button
-              onClick={(e) => onSubmit(e)}
+              onClick={async (e) => await onSubmit(e)}
               className="btn form-btn submit"
             >
               Submit

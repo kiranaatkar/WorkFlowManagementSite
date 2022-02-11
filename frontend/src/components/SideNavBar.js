@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import Networking from "./Networking.js";
+import { Link } from "react-router-dom";
 
 function SideNavBar(props) {
   const [projects, setProjects] = useState([]);
@@ -18,33 +19,40 @@ function SideNavBar(props) {
   function getProjectsComponentList(projects) {
     if (projects.length) {
       return projects.map((project) => (
-        <button
-          key={project.project_id}
-          className="btn sidebar-project-btn"
-          onClick={() =>
-            props.viewProject({ component: "project", props: project })
-          }
+        <Link
+          key={project.title}
+          to={`/project/${project.title}`}
+          state={{ project: project }}
         >
-          {project.title}
-        </button>
+          <button className="btn sidebar-project-btn">{project.title}</button>
+        </Link>
       ));
     } else {
       return <h3>No projects yet</h3>;
     }
   }
 
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  function closeNav(e) {
+    const openNavBtn =
+      e.target.parentNode.nextElementSibling.firstChild.firstChild;
+    const sideBar = e.target.parentNode;
+    const main = e.target.parentNode.parentNode.firstChild.nextElementSibling;
+    sideBar.style.width = "0px";
+    main.style.marginLeft = "0px";
+    openNavBtn.style.display = "inline-block";
+  }
+
   return (
-    <div className="side-nav-wrapper">
+    <div className="sidebar">
+      <button className="closebtn" onClick={(e) => closeNav(e)}>
+        &#9776;
+      </button>
       <h3 className="sidebar-title">Projects</h3>
       <div className="sidebar-projects-wrapper">
-        <button
-          className="btn sidebar-project-btn"
-          onClick={() =>
-            props.viewProject({ component: "new-project", props: null })
-          }
-        >
-          + Create
-        </button>
+        <Link to="/createProject">
+          <button className="btn sidebar-project-btn">+ Create</button>
+        </Link>
         {getProjectsComponentList(projects)}
       </div>
     </div>

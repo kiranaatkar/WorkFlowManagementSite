@@ -1,6 +1,24 @@
 .app-wrapper {
-  border: 1px solid black;
+  width: 90vw;
+}
+
+.main-content-wrapper {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* changed with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  overflow: hidden; /* Hide scrollbars */
+  padding-top: 30px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  background-color: rgb(36, 37, 38);
 }
 
 .btn {
@@ -21,24 +39,83 @@
   background-color: rgb(81, 83, 85);
 }
 
+/* Header */
+
 .top-nav-wrapper {
-  height: 50px;
+  height: 100px;
+  width: 97%;
+  position: fixed;
   flex: 1;
-  width: 100vw;
-  background-color: rgb(36, 37, 38);
-}
-
-.main-content-wrapper {
-  border: 1px solid black;
   display: flex;
+  justify-content: space-between;
+  background: rgb(36, 37, 38);
+  padding: 1rem 3rem 1rem;
 }
 
-.side-nav-wrapper {
-  width: 15vw;
-  /* margin-top: 45px; */
-  height: 100vh;
-  background-color: rgb(36, 37, 38);
+.dropbtn {
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 50%;
+  height: 65px;
+  width: 65px;
+}
+
+.emoji {
+  filter: grayscale(100%);
+}
+
+.home-btn {
+  padding: 10px;
+  font-size: 25px;
+  border-radius: 50%;
+  margin-right: 5px;
+  height: 65px;
+  width: 65px;
+}
+
+.home-btn:hover {
+  background-color: rgb(81, 83, 85);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(58, 59, 60);
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
   color: rgb(228, 230, 235);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: rgb(81, 83, 85);
+  border-radius: 5px;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: rgb(81, 83, 85);
 }
 
 .display-wrapper {
@@ -70,7 +147,7 @@
 
 .form-field textarea,
 .form-field input {
-  border: 2px solid #ffbe76;
+  border: none;
   -webkit-appearance: none;
   -ms-appearance: none;
   -moz-appearance: none;
@@ -82,6 +159,7 @@
   outline: none;
   transition: border-color 0.3s ease;
   background-color: rgb(58, 59, 60);
+  color: rgb(228, 230, 235);
 }
 
 .form-field input {
@@ -103,7 +181,7 @@
   padding: 5px;
   top: 10px;
   color: rgb(228, 230, 235);
-  border-color: #ffbe76;
+  border: 1px solid #ffbe76;
   transition-delay: 0.1s;
 }
 
@@ -154,17 +232,9 @@
 
 /* Side bar */
 
-.sidebar-projects-wrapper {
-  margin-top: 10px;
-  height: 90%;
-  width: 15vw;
-  overflow: auto;
-}
-
 .sidebar-title {
   padding-top: 20px;
   text-align: center;
-  font-size: x-large;
 }
 
 .sidebar-project-btn {
@@ -173,7 +243,7 @@
   border-top: 1px solid #ffbe76;
   border-bottom: 1px solid #ffbe76;
   padding: 5px;
-  width: 99%;
+  width: 100%;
 }
 
 *,
@@ -185,5 +255,58 @@
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
 
+  color: rgb(228, 230, 235);
+}
+
+/* Project display */
+.project-display {
+  margin-left: 50px;
+  margin-top: 20px;
+  color: rgb(228, 230, 235);
+  background-color: rgb(36, 37, 38);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.emphasis {
+  color: #ffbe76;
+}
+
+/* The sidebar menu */
+
+#main-side-bar {
+  background: rgb(36, 37, 38);
+}
+
+/* Position and style the close button (top right corner) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 20px;
+  margin-left: 50px;
+  background: rgb(24, 25, 26);
+}
+
+/* The button used to open the sidebar */
+.openbtn,
+.closebtn {
+  font-size: 20px;
+  cursor: pointer;
+  background: rgb(24, 25, 26);
   color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover,
+.closebtn:hover {
+  background-color: #444;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+main {
+  transition: margin-left 0.5s; /* If you want a transition effect */
+  padding: 20px;
+  padding-top: 100px;
 }
