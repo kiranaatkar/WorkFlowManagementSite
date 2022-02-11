@@ -1,42 +1,29 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NewProject from "./components/NewProject.js";
 import SideNavBar from "./components/SideNavBar.js";
 import Dashboard from "./components/Dashboard";
+import Header from "./components/Header";
 import Project from "./components/Project";
+import LoginPage from "./components/Login";
+import CreateAccount from "./components/CreateAccount";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [display, setDisplay] = useState({
-    component: "new-project",
-    props: null,
-  });
-
-  function displayComponent(display) {
-    switch (display.component) {
-      case "new-project":
-        return <NewProject />;
-
-      case "project":
-        return (
-          <Project
-            project={display.props}
-            viewProject={(displayObj) => setDisplay(displayObj)}
-          />
-        );
-
-      default:
-        return <Dashboard />;
-    }
-  }
-
   return (
     <div className="App-wrapper">
-      <div className="top-nav-wrapper"></div>
+      <Header />
       <div className="main-content-wrapper">
-        <div className="side-nav">
-          <SideNavBar viewProject={(displayObj) => setDisplay(displayObj)} />
-        </div>
-        <div className="display-wrapper">{displayComponent(display)}</div>
+        <SideNavBar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/createAccount" element={<CreateAccount />} />
+            <Route path="/project" element={<Project />} />
+            <Route path="/createProject" element={<NewProject />} />
+          </Routes>
+        </main>
       </div>
     </div>
   );

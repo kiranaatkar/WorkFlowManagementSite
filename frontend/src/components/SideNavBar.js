@@ -20,7 +20,7 @@ function SideNavBar(props) {
       return projects.map((project) => (
         <button
           key={project.project_id}
-          className="sidebar-project-btn"
+          className="btn sidebar-project-btn"
           onClick={() =>
             props.viewProject({ component: "project", props: project })
           }
@@ -38,7 +38,7 @@ function SideNavBar(props) {
       <h3 className="sidebar-title">Projects</h3>
       <div className="sidebar-projects-wrapper">
         <button
-          className="sidebar-project-btn"
+          className="btn sidebar-project-btn"
           onClick={() =>
             props.viewProject({ component: "new-project", props: null })
           }

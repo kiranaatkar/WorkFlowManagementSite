@@ -115,14 +115,20 @@ function NewProject() {
         {displayTasks(tasks)}
 
         <div className="form-btns">
-          <button onClick={(e) => addTask(e)} className="form-btn add">
+          <button onClick={(e) => addTask(e)} className="btn form-btn add">
             Add Task
           </button>
           <div>
-            <button onClick={(e) => clearFields(e)} className="form-btn clear">
+            <button
+              onClick={(e) => clearFields(e)}
+              className="btn form-btn clear"
+            >
               Clear All
             </button>
-            <button onClick={(e) => onSubmit(e)} className="form-btn submit">
+            <button
+              onClick={(e) => onSubmit(e)}
+              className="btn form-btn submit"
+            >
               Submit
             </button>
           </div>
