@@ -5,7 +5,7 @@ import SideNavBar from "./components/SideNavBar.js";
 import Dashboard from "./components/Dashboard";
 import Header from "./components/Header";
 import Project from "./components/Project";
-import LoginPage from "./components/Login";
+import LoginPage from "./components/LoginPage";
 import CreateAccount from "./components/CreateAccount";
 import { Routes, Route } from "react-router-dom";
 

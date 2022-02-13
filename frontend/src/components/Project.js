@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 function Project(props) {
   const location = useLocation();
   const { project } = location.state;
-  const { project_id, title, due_date, description } = project;
+  const { id, title, due_date, description } = project;
   const due = new Date(due_date).toLocaleString().split(", ")[0];
 
   const [tasks, setTasks] = useState([]);
@@ -14,9 +14,9 @@ function Project(props) {
 
   const mounted = useRef();
   useEffect(() => {
-    fetchTasks(project_id);
+    fetchTasks(id);
     mounted.current = true;
-  }, [project_id]); // ComponentDidMount
+  }, [id]); // ComponentDidMount
 
   async function fetchTasks(id) {
     const json = await myAPI.getProjectTasks(id);
@@ -26,7 +26,7 @@ function Project(props) {
   function getTaskComponentList(tasks) {
     if (tasks.length) {
       return tasks.map((task) => {
-        return <p key={task.task_id}>- {task.description}</p>;
+        return <p key={task.id}>- {task.description}</p>;
       });
     } else {
       return;

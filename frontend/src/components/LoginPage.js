@@ -6,10 +6,9 @@ import { Navigate } from "react-router-dom";
 import Input from "./Input";
 import { useState } from "react";
 
-function CreateAccount() {
+function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmation, setConfirmation] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [valid, setValid] = useState(true);
@@ -17,13 +16,13 @@ function CreateAccount() {
 
   async function onSubmit(e) {
     e.preventDefault();
-    if (email && password && confirmation) {
-      const response = await myAPI.createAccount(email, password, confirmation);
+    if (email && password) {
+      const response = await myAPI.login(email, password);
       if (response.status === 200) {
         setRedirect(true);
       } else {
-        setErrorMsg(response.json.message);
         setValid(false);
+        setErrorMsg("ERROR: " + response.json.msg);
       }
     }
   }
@@ -34,7 +33,7 @@ function CreateAccount() {
         <Navigate to="/dashboard" />
       ) : (
         <div className="form-wrapper">
-          <h2>Create Account</h2>
+          <h2>Log in</h2>
           <form onSubmit={async (e) => await onSubmit(e)} className="post-form">
             <Input
               change={(e) => setEmail(e.target.value)}
@@ -48,23 +47,17 @@ function CreateAccount() {
               value={password}
               type="password"
             />
-            <Input
-              change={(e) => setConfirmation(e.target.value)}
-              id="confirmation"
-              value={confirmation}
-              type="password"
-            />
             <button
               onClick={async (e) => await onSubmit(e)}
               className="form-btn btn submit"
             >
-              Create Account
+              Log in
             </button>
             <h5>
-              Already have an account?{" "}
-              <Link to="/login" className="sign-up">
+              Don't have an account?{" "}
+              <Link to="/createAccount" className="sign-up">
                 {" "}
-                Log in
+                Sign up
               </Link>
             </h5>
             <h3 className="error-msg">{!valid ? errorMsg : ""}</h3>
@@ -75,4 +68,4 @@ function CreateAccount() {
   );
 }
 
-export default CreateAccount;
+export default LoginPage;

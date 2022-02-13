@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import Networking from "./Networking.js";
 import { Link } from "react-router-dom";
+import getCookieObj from "./GetCookies";
 
 function SideNavBar(props) {
   const [projects, setProjects] = useState([]);
   const myAPI = new Networking();
+  const cookies = getCookieObj();
 
   useEffect(() => {
     fetchData();
@@ -50,7 +52,7 @@ function SideNavBar(props) {
       </button>
       <h3 className="sidebar-title">Projects</h3>
       <div className="sidebar-projects-wrapper">
-        <Link to="/createProject">
+        <Link to={cookies.user ? "/createProject" : "/login"}>
           <button className="btn sidebar-project-btn">+ Create</button>
         </Link>
         {getProjectsComponentList(projects)}

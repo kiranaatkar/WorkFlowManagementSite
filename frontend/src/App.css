@@ -132,9 +132,7 @@
 }
 
 .new-project-title {
-  margin-left: 50px;
   color: rgb(228, 230, 235);
-  text-align: left;
   font-size: xx-large;
 }
 
@@ -216,12 +214,6 @@
   width: 25px;
 }
 
-.form-btns {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-}
-
 .form-btn {
   padding: 1rem;
   margin-top: 10px;
@@ -276,6 +268,8 @@
 
 #main-side-bar {
   background: rgb(36, 37, 38);
+  display: flex;
+  flex-grow: 1;
 }
 
 /* Position and style the close button (top right corner) */
@@ -309,4 +303,32 @@ main {
   transition: margin-left 0.5s; /* If you want a transition effect */
   padding: 20px;
   padding-top: 100px;
+}
+
+.form-wrapper {
+  padding: 1rem 3rem 1rem;
+  border-radius: 5px;
+  background: rgb(36, 37, 38);
+  margin-top: 20px;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-up {
+  color: #ffbe76;
+}
+
+.error-msg {
+  color: #ff9317;
+}
+
+/* Dashboard */
+
+.projects-wrapper {
+  display: flex;
+  flex-wrap: wrap;
 }

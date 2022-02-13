@@ -1,6 +1,8 @@
 import "../App.css";
 import Networking from "./Networking";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import getCookieObj from "./GetCookies";
+import { Navigate } from "react-router-dom";
 
 const TODAY = new Date();
 
@@ -9,7 +11,10 @@ function NewProject() {
   const [dueDate, setDueDate] = useState("");
   const [description, setDescription] = useState("");
   const [tasks, updateTasks] = useState([]);
+  const [redirect, setRedirect] = useState(false);
+
   const myAPI = new Networking();
+  const cookies = getCookieObj();
 
   function displayTasks(tasks) {
     return tasks.map((task, i) => {
@@ -64,9 +69,16 @@ function NewProject() {
 
   async function onSubmit(e) {
     e.preventDefault();
+
+    // redirect if not logged in
+    if (!cookies.user) {
+      setRedirect(true);
+      return;
+    }
+
     if (title && dueDate && description) {
       const data = { title, dueDate, description, tasks };
-      const response = await myAPI.postNewProject(data);
+      await myAPI.postNewProject(data);
       clearFields(e);
     }
   }
@@ -78,62 +90,71 @@ function NewProject() {
 
   return (
     <div>
-      <h2 className="new-project-title">New Project</h2>
-      <form className="form-wrapper">
-        <label className="form-field">
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            onBlur={(e) => handleBlur(e)}
-          ></input>
-          <span className="placeholder">Project Title</span>
-        </label>
+      {redirect ? (
+        <Navigate to="/login" />
+      ) : (
+        <div className="form-wrapper">
+          <form onSubmit={async (e) => await onSubmit(e)} className="post-form">
+            <h2 className="new-project-title">New Project</h2>
+            <label className="form-field">
+              <input
+                type="text"
+                id="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                onBlur={(e) => handleBlur(e)}
+              ></input>
+              <span className="placeholder">Project Title</span>
+            </label>
 
-        <label className="form-field">
-          <input
-            type="text"
-            value={dueDate}
-            onFocus={(e) => (e.target.type = "date")}
-            min={TODAY.toISOString().split("T")[0]}
-            onChange={(e) => setDueDate(e.target.value)}
-            onBlur={(e) => handleBlur(e)}
-          ></input>
-          <span className="placeholder">Due Date</span>
-        </label>
-        <label className="form-field">
-          <textarea
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            onBlur={(e) => handleBlur(e)}
-          ></textarea>
-          <span className="placeholder">Project Overview</span>
-        </label>
+            <label className="form-field">
+              <input
+                type="text"
+                value={dueDate}
+                onFocus={(e) => (e.target.type = "date")}
+                min={TODAY.toISOString().split("T")[0]}
+                onChange={(e) => setDueDate(e.target.value)}
+                onBlur={(e) => handleBlur(e)}
+              ></input>
+              <span className="placeholder">Due Date</span>
+            </label>
+            <label className="form-field">
+              <textarea
+                type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                onBlur={(e) => handleBlur(e)}
+              ></textarea>
+              <span className="placeholder">Project Overview</span>
+            </label>
 
-        {displayTasks(tasks)}
+            {displayTasks(tasks)}
 
-        <div className="form-btns">
-          <button onClick={(e) => addTask(e)} className="btn form-btn add">
-            Add Task
-          </button>
-          <div>
-            <button
-              onClick={(e) => clearFields(e)}
-              className="btn form-btn clear"
-            >
-              Clear All
-            </button>
-            <button
-              onClick={async (e) => await onSubmit(e)}
-              className="btn form-btn submit"
-            >
-              Submit
-            </button>
-          </div>
+            <div className="form-btns">
+              <button
+                onClick={(e) => addTask(e)}
+                className="form-btn btn submit"
+              >
+                Add Task
+              </button>
+              <div>
+                <button
+                  onClick={(e) => clearFields(e)}
+                  className="form-btn btn submit"
+                >
+                  Clear All
+                </button>
+                <button
+                  onClick={async (e) => await onSubmit(e)}
+                  className="btn form-btn submit"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-      </form>
+      )}
     </div>
   );
 }
