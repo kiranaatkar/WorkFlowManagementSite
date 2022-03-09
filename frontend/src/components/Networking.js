@@ -1,6 +1,6 @@
 class Networking {
   async getAllProjects() {
-    const response = await fetch("http://localhost:8080/projects");
+    const response = await fetch('http://localhost:8080/projects');
     const json = await response.json();
     return json;
   }
@@ -14,10 +14,10 @@ class Networking {
   }
 
   async postNewProject(data) {
-    const response = await fetch("http://localhost:8080/projects", {
-      method: "POST",
+    const response = await fetch('http://localhost:8080/projects', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
@@ -26,11 +26,11 @@ class Networking {
 
   async createAccount(email, password, confirmation) {
     const data = { email, password, confirmation };
-    const response = await fetch("http://localhost:8080/users", {
-      method: "POST",
-      credentials: "include",
+    const response = await fetch('http://localhost:8080/users', {
+      method: 'POST',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
@@ -40,24 +40,25 @@ class Networking {
 
   async login(email, password) {
     const data = { email, password };
-    const response = await fetch("http://localhost:8080/sessions", {
-      method: "POST",
-      credentials: "include",
+    const response = await fetch('http://localhost:8080/sessions', {
+      method: 'POST',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     });
     const json = await response.json();
+    console.log(json);
     return { json, status: response.status };
   }
 
   async logOut() {
     const response = await fetch(`http://localhost:8080/sessions`, {
-      method: "DELETE",
-      credentials: "include",
+      method: 'DELETE',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
     return response;

@@ -118,8 +118,8 @@ async function validateCreateAccount(email, password, confirmation) {
   };
 
   const tooShort = {
-    value: password.length < 8,
-    error: "Password must be at least 8 characters. ",
+    value: password.length < 4,
+    error: "Password must be at least 4 characters. ",
   };
   const authentication = { exists, match, tooShort };
   let errorMsg = "";
