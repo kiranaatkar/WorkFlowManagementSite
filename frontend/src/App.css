@@ -1,5 +1,37 @@
+:root {
+  /* ===== Colors ===== */
+  --body-color: #e4e9f7;
+  --sidebar-color: #fff;
+  --primary-color: #e7520c;
+  --primary-color-light: #f6f5ff;
+  --toggle-color: #ddd;
+  --text-color: #707070;
+
+  /* ====== Transition ====== */
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
 .app-wrapper {
-  width: 90vw;
+  min-height: 100vh;
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+}
+
+.app-wrapper.dark {
+  --body-color: #18191a;
+  --sidebar-color: #242526;
+  --primary-color: #3a3b3c;
+  --primary-color-light: #3a3b3c;
+  --toggle-color: #fff;
+  --text-color: #ccc;
 }
 
 .main-content-wrapper {
@@ -8,23 +40,22 @@
   flex-wrap: wrap;
 }
 
-.sidebar {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* changed with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0;
-  left: 0;
-  overflow: hidden; /* Hide scrollbars */
-  padding-top: 30px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-  background-color: rgb(36, 37, 38);
+/* -- Buttons -- */
+
+.dark .btn {
+  border: 1px solid #ffbe76;
+  background-color: rgb(58, 59, 60);
+  color: rgb(228, 230, 235);
+}
+
+.dark .btn:hover {
+  background-color: rgb(81, 83, 85);
 }
 
 .btn {
-  border: 1px solid #ffbe76;
+  border: 1px solid var(--primary-color);
   padding: 1rem;
-  background-color: rgb(58, 59, 60);
+  background-color: var(--primary-color);
   font-size: 16px;
   color: rgb(228, 230, 235);
   cursor: pointer;
@@ -36,91 +67,7 @@
 }
 
 .btn:hover {
-  background-color: rgb(81, 83, 85);
-}
-
-/* Header */
-
-.top-nav-wrapper {
-  height: 100px;
-  width: 97%;
-  position: fixed;
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-  background: rgb(36, 37, 38);
-  padding: 1rem 3rem 1rem;
-}
-
-.dropbtn {
-  padding: 16px;
-  font-size: 16px;
-  border-radius: 50%;
-  height: 65px;
-  width: 65px;
-}
-
-.emoji {
-  filter: grayscale(100%);
-}
-
-.home-btn {
-  padding: 10px;
-  font-size: 25px;
-  border-radius: 50%;
-  margin-right: 5px;
-  height: 65px;
-  width: 65px;
-}
-
-.home-btn:hover {
-  background-color: rgb(81, 83, 85);
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: rgb(58, 59, 60);
-  min-width: 140px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  border-radius: 5px;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: rgb(228, 230, 235);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: rgb(81, 83, 85);
-  border-radius: 5px;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: rgb(81, 83, 85);
-}
-
-.display-wrapper {
-  margin-top: 50px;
-  margin-left: 20px;
+  background-color: #e7510c88;
 }
 
 /*  New project */
@@ -134,73 +81,6 @@
 .new-project-title {
   color: rgb(228, 230, 235);
   font-size: xx-large;
-}
-
-.form-field {
-  font-size: 14px;
-  position: relative;
-  padding-top: 20px;
-  margin-bottom: 5px;
-}
-
-.form-field textarea,
-.form-field input {
-  border: none;
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  padding: 12px;
-  border-radius: 3px;
-  width: 500px;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.3s ease;
-  background-color: rgb(58, 59, 60);
-  color: rgb(228, 230, 235);
-}
-
-.form-field input {
-  height: 40px;
-}
-
-.form-field input:hover,
-.form-field textarea:hover {
-  background-color: rgb(81, 83, 85);
-}
-
-.form-field textarea {
-  padding: 20px;
-  height: 80px;
-}
-
-.form-field textarea:focus,
-.form-field input:focus {
-  padding: 5px;
-  top: 10px;
-  color: rgb(228, 230, 235);
-  border: 1px solid #ffbe76;
-  transition-delay: 0.1s;
-}
-
-.form-field .placeholder {
-  position: absolute;
-  left: 12px;
-  top: calc(50% + 10px);
-  transform: translateY(-50%);
-  color: rgb(228, 230, 235);
-  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
-}
-
-.form-field textarea.blurred + .placeholder,
-.form-field textarea:focus + .placeholder,
-.form-field input.blurred + .placeholder,
-.form-field input:focus + .placeholder {
-  top: 10px;
-  font-size: 10px;
-  color: #ffbe76;
-  background: none;
-  padding: 3px;
 }
 
 .task {
@@ -222,113 +102,7 @@
   border-radius: 3px;
 }
 
-/* Side bar */
-
-.sidebar-title {
-  padding-top: 20px;
-  text-align: center;
-}
-
-.sidebar-project-btn {
-  border-right: none;
-  border-left: none;
-  border-top: 1px solid #ffbe76;
-  border-bottom: 1px solid #ffbe76;
-  padding: 5px;
-  width: 100%;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-
-  color: rgb(228, 230, 235);
-}
-
-/* Project display */
-.project-display {
-  margin-left: 50px;
-  margin-top: 20px;
-  color: rgb(228, 230, 235);
-  background-color: rgb(36, 37, 38);
-  padding: 2rem;
-  border-radius: 10px;
-}
-
-.emphasis {
-  color: #ffbe76;
-}
-
-/* The sidebar menu */
-
-#main-side-bar {
-  background: rgb(36, 37, 38);
-  /* display: flex;
-  flex-grow: 1; */
-}
-
-/* Position and style the close button (top right corner) */
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 10px;
-  font-size: 20px;
-  margin-left: 50px;
-  background: rgb(24, 25, 26);
-}
-
-/* The button used to open the sidebar */
-.openbtn,
-.closebtn {
-  font-size: 20px;
-  cursor: pointer;
-  background: rgb(24, 25, 26);
-  color: white;
-  padding: 10px 15px;
-  border: none;
-}
-
-.openbtn:hover,
-.closebtn:hover {
-  background-color: #444;
-}
-
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 main {
-  transition: margin-left 0.5s; /* If you want a transition effect */
   padding: 20px;
   padding-top: 100px;
-}
-
-.form-wrapper {
-  padding: 1rem 3rem 1rem;
-  border-radius: 5px;
-  background: rgb(36, 37, 38);
-  margin-top: 20px;
-}
-
-.post-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.sign-up {
-  color: #ffbe76;
-}
-
-.error-msg {
-  color: #ff9317;
-}
-
-/* Dashboard */
-
-.projects-wrapper {
-  display: flex;
-  flex-wrap: wrap;
 }

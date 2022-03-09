@@ -1,0 +1,16 @@
+.top-nav-wrapper {
+  height: 100px;
+  width: 97%;
+  position: fixed;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  padding: 1rem 3rem 1rem;
+}
+
+/* Dark mode */
+
+.dark .top-nav-wrapper {
+  background: rgb(36, 37, 38);
+}

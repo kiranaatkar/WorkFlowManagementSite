@@ -1,0 +1,32 @@
+.login-form-wrapper,
+.account-form-wrapper {
+  padding: 1rem 3rem 1rem;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  margin-top: 20px;
+  margin-left: 50px;
+  width: 50vw;
+}
+
+.login-form,
+.account-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-up,
+.create-acc {
+  color: #003cff;
+}
+
+/* Dark mode */
+
+.dark .form-wrapper {
+  background: rgb(36, 37, 38);
+}
+
+.dark .sign-up,
+.dark .create-acc {
+  color: #ffbe76;
+}
