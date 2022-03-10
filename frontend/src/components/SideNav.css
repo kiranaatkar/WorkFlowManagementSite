@@ -71,6 +71,11 @@
 
 .sidebar .text,
 .sidebar .icon {
+  color: rgb(228, 230, 235);
+  transition: var(--tran-03);
+}
+
+.sidebar .text .dark-mode {
   color: var(--text-color);
   transition: var(--tran-03);
 }
@@ -171,6 +176,15 @@ body.dark .sidebar header .toggle {
   font-weight: 500;
   transition: var(--tran-05);
 }
+
+.sidebar li.search-box i {
+  border-radius: 6px;
+  background-color: var(--primary-color-light);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: var(--tran-05);
+}
+
 .sidebar li a {
   list-style: none;
   height: 100%;
@@ -185,15 +199,15 @@ body.dark .sidebar header .toggle {
 }
 
 .sidebar li a:hover {
-  background-color: var(--primary-color);
+  background-color: rgb(228, 230, 235);
 }
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text {
-  color: var(--sidebar-color);
+  color: var(--text-color);
 }
 body.dark .sidebar li a:hover .icon,
 body.dark .sidebar li a:hover .text {
-  color: var(--text-color);
+  color: #ffbe76;
 }
 
 .sidebar .menu-bar {
@@ -206,6 +220,8 @@ body.dark .sidebar li a:hover .text {
 .menu-bar::-webkit-scrollbar {
   display: none;
 }
+
+/* dark mode icon */
 .sidebar .menu-bar .mode {
   border-radius: 6px;
   background-color: var(--primary-color-light);
@@ -216,50 +232,10 @@ body.dark .sidebar li a:hover .text {
 .menu-bar .mode .sun-moon {
   height: 50px;
   width: 60px;
+  color: var(--text-color);
 }
 
 .mode .sun-moon i {
   position: absolute;
-}
-.mode .sun-moon i.sun {
-  opacity: 0;
-}
-body.dark .mode .sun-moon i.sun {
-  opacity: 1;
-}
-body.dark .mode .sun-moon i.moon {
-  opacity: 0;
-}
-
-.menu-bar .bottom-content .toggle-switch {
-  position: absolute;
-  right: 0;
-  height: 100%;
-  min-width: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.toggle-switch .switch {
-  position: relative;
-  height: 22px;
-  width: 40px;
-  border-radius: 25px;
-  background-color: var(--toggle-color);
-  transition: var(--tran-05);
-}
-
-.switch::before {
-  content: '';
-  position: absolute;
-  height: 15px;
-  width: 15px;
-  border-radius: 50%;
-  top: 50%;
-  left: 5px;
-  transform: translateY(-50%);
-  background-color: var(--sidebar-color);
-  transition: var(--tran-04);
+  color: var(--text-color);
 }

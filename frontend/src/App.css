@@ -40,68 +40,6 @@
   flex-wrap: wrap;
 }
 
-/* -- Buttons -- */
-
-.dark .btn {
-  border: 1px solid #ffbe76;
-  background-color: rgb(58, 59, 60);
-  color: rgb(228, 230, 235);
-}
-
-.dark .btn:hover {
-  background-color: rgb(81, 83, 85);
-}
-
-.btn {
-  border: 1px solid var(--primary-color);
-  padding: 1rem;
-  background-color: var(--primary-color);
-  font-size: 16px;
-  color: rgb(228, 230, 235);
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.15s ease-in-out;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: 3px;
-}
-
-.btn:hover {
-  background-color: #e7510c88;
-}
-
-/*  New project */
-.form-wrapper {
-  margin-left: 50px;
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-}
-
-.new-project-title {
-  color: rgb(228, 230, 235);
-  font-size: xx-large;
-}
-
-.task {
-  display: flex;
-  position: relative;
-}
-
-.task .form-btn {
-  padding: 0;
-  height: 25px;
-  width: 25px;
-}
-
-.form-btn {
-  padding: 1rem;
-  margin-top: 10px;
-  margin: 5px;
-  width: 40%;
-  border-radius: 3px;
-}
-
 main {
   padding: 20px;
   padding-top: 100px;

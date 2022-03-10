@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SideNav.css';
+import './ToggleSwitch.css';
 import { Link } from 'react-router-dom';
 import Networking from './Networking';
 import SideBarHeader from './SideBarHeader.js';
@@ -47,20 +48,20 @@ function ResponsiveNavBar(props) {
             </Link>
           </li>
 
-          <li className='mode'>
-            <div className='sun-moon'>
-              <i
-                className={`bx bx-${
-                  props.darkMode ? 'moon icon moon' : 'sun icon sun'
-                }`}></i>
-            </div>
-            <span className='mode-text text'>
-              {props.darkMode ? 'Dark mode' : 'Light mode'}
+          <li className='mode sun-moon search-box'>
+            <i
+              className={`bx bx-${
+                !props.darkMode ? 'moon icon moon' : 'sun icon sun'
+              }`}></i>
+            <span className='mode-text text dark-mode'>
+              {props.darkMode ? 'Light mode' : 'Dark mode'}
             </span>
-
-            <div className='toggle-switch' onClick={(e) => toggleDarkMode(e)}>
-              <span className='switch'></span>
-            </div>
+            <label class='switch'>
+              <input type='checkbox' />
+              <span
+                class='slider round'
+                onClick={(e) => toggleDarkMode(e)}></span>
+            </label>
           </li>
         </div>
       </div>
