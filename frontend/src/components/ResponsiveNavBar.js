@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import './SideNav.css';
+import { Link } from 'react-router-dom';
+import Networking from './Networking';
+import SideBarHeader from './SideBarHeader.js';
 
 function ResponsiveNavBar(props) {
   const [navOpen, toggleNav] = useState(false);
+  const myAPI = new Networking();
 
   function toggleNavBar(origin) {
     if (origin === 'toggle') {
@@ -12,24 +16,21 @@ function ResponsiveNavBar(props) {
     }
   }
 
-  function toggleDarkMode(e) {
+  function toggleDarkMode() {
     props.toggleDarkMode();
+  }
+
+  async function handleLogInOut() {
+    if (props.user) {
+      await myAPI.logOut();
+    }
+    props.logInOut();
   }
 
   return (
     <nav className={`sidebar ${navOpen ? '' : 'close'}`}>
       <header>
-        <div className='image-text'>
-          <span className='image'>
-            <img src='logo.png' alt='' />
-          </span>
-
-          <div className='text logo-text'>
-            <span className='name'>Very Good</span>
-            <span className='profession'>Web developer</span>
-          </div>
-        </div>
-
+        <SideBarHeader user={props.user} />
         <i
           className='bx bx-chevron-right toggle'
           onClick={() => toggleNavBar('toggle')}></i>
@@ -44,16 +45,16 @@ function ResponsiveNavBar(props) {
 
           <ul className='menu-links'>
             <li className='nav-link'>
-              <a href='#'>
+              <Link to='/dashboard'>
                 <i className='bx bx-home-alt icon'></i>
                 <span className='text nav-text'>Dashboard</span>
-              </a>
+              </Link>
             </li>
 
             <li className='nav-link'>
               <a href='#'>
-                <i className='bx bx-bar-chart-alt-2 icon'></i>
-                <span className='text nav-text'>Revenue</span>
+                <i className='bx bx-book-content icon'></i>
+                <span className='text nav-text'>Projects</span>
               </a>
             </li>
 
@@ -70,29 +71,17 @@ function ResponsiveNavBar(props) {
                 <span className='text nav-text'>Analytics</span>
               </a>
             </li>
-
-            <li className='nav-link'>
-              <a href='#'>
-                <i className='bx bx-heart icon'></i>
-                <span className='text nav-text'>Likes</span>
-              </a>
-            </li>
-
-            <li className='nav-link'>
-              <a href='#'>
-                <i className='bx bx-wallet icon'></i>
-                <span className='text nav-text'>Wallets</span>
-              </a>
-            </li>
           </ul>
         </div>
 
         <div className='bottom-content'>
           <li className=''>
-            <a href='#'>
-              <i className='bx bx-log-out icon'></i>
-              <span className='text nav-text'>Logout</span>
-            </a>
+            <Link to='/login' onClick={async () => await handleLogInOut()}>
+              <i className={`bx bx-log-${props.user ? 'out' : 'in'} icon`}></i>
+              <span className='text nav-text'>{`${
+                props.user ? 'Logout' : 'Login'
+              }`}</span>
+            </Link>
           </li>
 
           <li className='mode'>

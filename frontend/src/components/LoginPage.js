@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom';
 import Input from './Input';
 import { useState } from 'react';
 
-function LoginPage() {
+function LoginPage(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
@@ -20,6 +20,7 @@ function LoginPage() {
     if (email && password) {
       const response = await myAPI.login(email, password);
       if (response.status === 200) {
+        props.logInOut();
         setRedirect(true);
       } else {
         setValid(false);
