@@ -12,7 +12,10 @@ function ResponsiveNavBar(props) {
   function toggleNavBar(origin) {
     if (origin === 'toggle') {
       toggleNav(!navOpen);
-    } else if (origin === 'search-box' && !navOpen) {
+    } else if (
+      (origin === 'search-box' || origin === 'project-btn') &&
+      !navOpen
+    ) {
       toggleNav(!navOpen);
     }
   }

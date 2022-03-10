@@ -19,11 +19,8 @@ function ProjectDropDown(props) {
   function getProjectsComponentList(projects) {
     if (projects.length && props.user) {
       return projects.map((project) => (
-        <li className='nav-link'>
-          <Link
-            key={project.title}
-            to={`/project/${project.title}`}
-            state={{ project: project }}>
+        <li className='nav-link' key={project.title}>
+          <Link to={`/project/${project.title}`} state={{ project: project }}>
             <span className='text nav-text'>{project.title}</span>
           </Link>
         </li>
@@ -35,14 +32,16 @@ function ProjectDropDown(props) {
 
   return (
     <div className='dropdown'>
-      <li className='nav-link dropdown-btn'>
+      <li
+        className='nav-link dropdown-btn'
+        onClick={() => props.toggleNavBar('project-btn')}>
         <a href='#'>
           <i className='bx bx-book-content icon'></i>
           <span className='text nav-text'>Projects</span>
         </a>
       </li>
       <div className='dropdown-content'>
-        <li clasName='nav-link'>
+        <li className='nav-link' key='Create-project'>
           <Link to={props.user ? '/createProject' : '/login'}>
             <span className='text nav-text'>+ Create</span>
           </Link>
@@ -54,26 +53,3 @@ function ProjectDropDown(props) {
 }
 
 export default ProjectDropDown;
-
-// <div className='dropdown'>
-//   <button className='dropbtn btn'>
-//     <i className='far fa-user'></i>
-//   </button>
-//   <div className='dropdown-content'>
-//     {cookies.user ? (
-//       <div>
-//         <Link className='username' to='/profile'>
-//           {cookies.user.split('@')[0]}
-//         </Link>
-//         <Link to='/login' onClick={async () => await logOut()}>
-//           Log out
-//         </Link>
-//       </div>
-//     ) : (
-//       <div>
-//         <Link to='/login'>Login</Link>
-//         <Link to='/createAccount'>Create Account</Link>
-//       </div>
-//     )}
-//   </div>
-// </div>;

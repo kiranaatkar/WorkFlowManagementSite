@@ -7,3 +7,8 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+/* Don't open if sidebar closed */
+.close .dropdown:hover .dropdown-content {
+  display: none;
+}

@@ -19,7 +19,7 @@ function SideBarMenu(props) {
           </Link>
         </li>
 
-        <ProjectDropDown user={props.user} />
+        <ProjectDropDown user={props.user} toggleNavBar={props.toggleNavBar} />
 
         <li className='nav-link'>
           <a href='#'>
