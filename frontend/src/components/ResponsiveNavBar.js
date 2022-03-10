@@ -86,8 +86,10 @@ function ResponsiveNavBar(props) {
 
           <li className='mode'>
             <div className='sun-moon'>
-              <i className='bx bx-moon icon moon'></i>
-              <i className='bx bx-sun icon sun'></i>
+              <i
+                className={`bx bx-${
+                  props.darkMode ? 'moon icon moon' : 'sun icon sun'
+                }`}></i>
             </div>
             <span className='mode-text text'>
               {props.darkMode ? 'Dark mode' : 'Light mode'}
