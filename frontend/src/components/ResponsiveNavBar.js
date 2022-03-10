@@ -3,6 +3,7 @@ import './SideNav.css';
 import { Link } from 'react-router-dom';
 import Networking from './Networking';
 import SideBarHeader from './SideBarHeader.js';
+import SideBarMenu from './SideBarMenu';
 
 function ResponsiveNavBar(props) {
   const [navOpen, toggleNav] = useState(false);
@@ -29,51 +30,10 @@ function ResponsiveNavBar(props) {
 
   return (
     <nav className={`sidebar ${navOpen ? '' : 'close'}`}>
-      <header>
-        <SideBarHeader user={props.user} />
-        <i
-          className='bx bx-chevron-right toggle'
-          onClick={() => toggleNavBar('toggle')}></i>
-      </header>
+      <SideBarHeader user={props.user} toggleNavBar={toggleNavBar} />
 
       <div className='menu-bar'>
-        <div className='menu'>
-          <li className='search-box' onClick={() => toggleNavBar('search-box')}>
-            <i className='bx bx-search icon'></i>
-            <input type='text' placeholder='Search...' />
-          </li>
-
-          <ul className='menu-links'>
-            <li className='nav-link'>
-              <Link to='/dashboard'>
-                <i className='bx bx-home-alt icon'></i>
-                <span className='text nav-text'>Dashboard</span>
-              </Link>
-            </li>
-
-            <li className='nav-link'>
-              <a href='#'>
-                <i className='bx bx-book-content icon'></i>
-                <span className='text nav-text'>Projects</span>
-              </a>
-            </li>
-
-            <li className='nav-link'>
-              <a href='#'>
-                <i className='bx bx-bell icon'></i>
-                <span className='text nav-text'>Notifications</span>
-              </a>
-            </li>
-
-            <li className='nav-link'>
-              <a href='#'>
-                <i className='bx bx-pie-chart-alt icon'></i>
-                <span className='text nav-text'>Analytics</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-
+        <SideBarMenu toggleNavBar={toggleNavBar} user={props.user} />
         <div className='bottom-content'>
           <li className=''>
             <Link to='/login' onClick={async () => await handleLogInOut()}>

@@ -1,0 +1,9 @@
+.dropdown-content {
+  display: none;
+  text-align: left;
+  padding-left: 55px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

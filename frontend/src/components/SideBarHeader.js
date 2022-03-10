@@ -16,18 +16,23 @@ function SideBarHeader(props) {
   }
 
   return (
-    <div className='image-text'>
-      <span className='image'>
-        <img src='logo.png' alt='' />
-      </span>
-
-      <div className='text logo-text'>
-        <span className='name'>
-          {props.user ? `${props.user.split('@')[0]}` : 'Very Good'}
+    <header>
+      <div className='image-text'>
+        <span className='image'>
+          <img src='logo.png' alt='' />
         </span>
-        <span className='profession'>{getGreetingMessage()}</span>
+
+        <div className='text logo-text'>
+          <span className='name'>
+            {props.user ? `${props.user.split('@')[0]}` : 'Very Good'}
+          </span>
+          <span className='profession'>{getGreetingMessage()}</span>
+        </div>
       </div>
-    </div>
+      <i
+        className='bx bx-chevron-right toggle'
+        onClick={() => props.toggleNavBar('toggle')}></i>
+    </header>
   );
 }
 
