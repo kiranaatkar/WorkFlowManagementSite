@@ -1,49 +1,50 @@
-import "./App.css";
-import React, { useState } from "react";
-import NewProject from "./components/NewProject.js";
-import SideNavBar from "./components/SideNavBar.js";
-import Dashboard from "./components/Dashboard";
-import Header from "./components/Header";
-import Project from "./components/Project";
-import LoginPage from "./components/LoginPage";
-import CreateAccount from "./components/CreateAccount";
-import { Routes, Route } from "react-router-dom";
+import './App.css';
+import './style.css';
+import React, { useState } from 'react';
+import NewProject from './components/NewProject.js';
+import Dashboard from './components/Dashboard';
+import Header from './components/Header';
+import Project from './components/Project';
+import LoginPage from './components/LoginPage';
+import CreateAccount from './components/CreateAccount';
+import ResponsiveNavBar from './components/ResponsiveNavBar';
+import { Routes, Route } from 'react-router-dom';
+import getCookieObj from './components/GetCookies';
 
 function App() {
-  /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-  function openNav(e) {
-    const openNavBtn = e.target;
-    const sideBar = e.target.parentNode.parentNode.parentNode.firstChild;
-    const main = e.target.parentNode.parentNode;
-    sideBar.style.width = "250px";
-    sideBar.style.display = "block";
-    main.style.marginLeft = "250px";
-    openNavBtn.style.display = "none";
+  const [darkMode, toggleMode] = useState(false);
+  const [user, userLoggedIn] = useState(getCookieObj().user);
+
+  function toggleDarkMode() {
+    toggleMode(!darkMode);
+  }
+
+  function logInOut() {
+    console.log(getCookieObj().user);
+    userLoggedIn(getCookieObj().user);
   }
 
   return (
-    <div className="app-wrapper">
-      <SideNavBar id="mySidebar" />
+    <div className={`app-wrapper ${darkMode ? 'dark' : ''}`}>
+      <ResponsiveNavBar
+        toggleDarkMode={toggleDarkMode}
+        darkMode={darkMode}
+        user={user}
+        logInOut={logInOut}
+      />
 
-      <div className="main-content-wrapper">
-        <div id="main-side-bar">
-          <button className="openbtn" onClick={(e) => openNav(e)}>
-            &#9776;
-          </button>
-        </div>
-        <div>
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/createAccount" element={<CreateAccount />} />
-              <Route path="/project/:name" element={<Project />} />
-              <Route path="/createProject" element={<NewProject />} />
-            </Routes>
-          </main>
-        </div>
-      </div>
+      <section className='home'>
+        <Header />
+        <main>
+          <Routes>
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/login' element={<LoginPage logInOut={logInOut} />} />
+            <Route path='/createAccount' element={<CreateAccount />} />
+            <Route path='/project/:name' element={<Project />} />
+            <Route path='/createProject' element={<NewProject />} />
+          </Routes>
+        </main>
+      </section>
     </div>
   );
 }

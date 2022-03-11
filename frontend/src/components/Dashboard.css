@@ -1,0 +1,28 @@
+.projects-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project-display {
+  margin-left: 50px;
+  margin-top: 20px;
+  color: black;
+  background-color: var(--primary-color);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.emphasis {
+  color: white;
+}
+
+/* Dark Mode */
+
+.dark .project-display {
+  color: rgb(228, 230, 235);
+  background-color: rgb(36, 37, 38);
+}
+
+.dark .emphasis {
+  color: #ffbe76;
+}

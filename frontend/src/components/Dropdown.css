@@ -1,0 +1,14 @@
+.dropdown-content {
+  display: none;
+  text-align: left;
+  padding-left: 55px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Don't open if sidebar closed */
+.close .dropdown:hover .dropdown-content {
+  display: none;
+}

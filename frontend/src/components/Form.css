@@ -1,0 +1,139 @@
+.error-msg {
+  color: #ff9317;
+}
+
+.form-field {
+  font-size: 14px;
+  position: relative;
+  padding-top: 20px;
+  margin-bottom: 5px;
+}
+
+.form-field textarea,
+.form-field input {
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 12px;
+  border-radius: 3px;
+  width: 500px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: rgb(228, 230, 235);
+  color: rgb(58, 59, 60);
+}
+
+.form-field input {
+  height: 40px;
+}
+
+.form-field input:hover,
+.form-field textarea:hover {
+  background-color: #e4e9f7;
+}
+
+.form-field textarea {
+  padding: 20px;
+  height: 80px;
+}
+
+.form-field textarea:focus,
+.form-field input:focus {
+  padding: 5px;
+  top: 10px;
+  color: rgb(58, 59, 60);
+  border: 1px solid rgb(228, 230, 235);
+  transition-delay: 0.1s;
+}
+
+.form-field .placeholder {
+  position: absolute;
+  left: 12px;
+  top: calc(50% + 10px);
+  transform: translateY(-50%);
+  color: rgb(58, 59, 60);
+  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+}
+
+.form-field textarea.blurred + .placeholder,
+.form-field textarea:focus + .placeholder,
+.form-field input.blurred + .placeholder,
+.form-field input:focus + .placeholder {
+  top: 10px;
+  font-size: 10px;
+  color: white;
+  background: none;
+  padding: 3px;
+}
+
+/* Dark mode */
+
+.dark .btn-text {
+  color: #ffbe76;
+}
+
+.dark .error-msg {
+  color: #ff9317;
+}
+
+.dark .form-field textarea,
+.dark .form-field input {
+  background-color: rgb(58, 59, 60);
+  color: rgb(228, 230, 235);
+  border: 1px solid #ffbe76;
+}
+
+.dark .form-field input:hover,
+.dark .form-field textarea:hover {
+  background-color: rgb(81, 83, 85);
+}
+
+.dark .form-field textarea:focus,
+.dark .form-field input:focus {
+  color: rgb(228, 230, 235);
+  border: 1px solid #ffbe76;
+}
+
+.dark .form-field .placeholder {
+  color: rgb(228, 230, 235);
+}
+
+.dark .form-field textarea.blurred + .dark .placeholder,
+.dark .form-field textarea:focus + .dark .placeholder,
+.dark .form-field input.blurred + .dark .placeholder,
+.dark .form-field input:focus + .dark .placeholder {
+  color: #ffbe76;
+}
+
+/* -- Buttons -- */
+
+.dark .btn {
+  border: 1px solid #ffbe76;
+  background-color: rgb(58, 59, 60);
+  color: rgb(228, 230, 235);
+}
+
+.dark .btn:hover {
+  background-color: rgb(81, 83, 85);
+}
+
+.btn {
+  border: 1px solid var(--primary-color-light);
+  padding: 1rem;
+  background-color: var(--primary-color);
+  font-size: 16px;
+  color: rgb(228, 230, 235);
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.15s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 3px;
+}
+
+.btn:hover {
+  background-color: #eb7b48;
+}

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import "../App.css";
-import Networking from "./Networking.js";
-import ProjectWiget from "./ProjectWiget";
+import React, { useState, useEffect } from 'react';
+import '../App.css';
+import './Dashboard.css';
+import Networking from './Networking.js';
+import ProjectWiget from './ProjectWiget';
 
 function Dashboard(props) {
   const [projects, setProjects] = useState([]);
@@ -27,8 +28,8 @@ function Dashboard(props) {
   }
 
   return (
-    <div className="dashboard-wrapper">
-      <div className="projects-wrapper">
+    <div className='dashboard-wrapper'>
+      <div className='projects-wrapper'>
         {getProjectsComponentList(projects)}
       </div>
     </div>
