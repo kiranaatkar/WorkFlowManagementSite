@@ -9,6 +9,7 @@ import SideBarMenu from './SideBarMenu';
 function ResponsiveNavBar(props) {
   const [navOpen, toggleNav] = useState(false);
   const myAPI = new Networking();
+  console.log(props.darkMode);
 
   function toggleNavBar(origin) {
     if (origin === 'toggle') {
@@ -52,12 +53,13 @@ function ResponsiveNavBar(props) {
             <i
               className={`bx bx-${
                 !props.darkMode ? 'moon icon moon' : 'sun icon sun'
-              }`}></i>
+              }`}
+              onClick={(e) => toggleDarkMode(e)}></i>
             <span className='mode-text text dark-mode'>
               {props.darkMode ? 'Light mode' : 'Dark mode'}
             </span>
             <label class='switch'>
-              <input type='checkbox' />
+              <input type='checkbox' checked={props.darkMode ? true : false} />
               <span
                 class='slider round'
                 onClick={(e) => toggleDarkMode(e)}></span>

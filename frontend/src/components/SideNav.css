@@ -201,12 +201,17 @@ body.dark .sidebar header .toggle {
 .sidebar li a:hover {
   background-color: rgb(228, 230, 235);
 }
+
+.dark .sidebar li a:hover {
+  background-color: #3a3b3c;
+}
+
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text {
   color: var(--text-color);
 }
-body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text {
+.dark .sidebar li a:hover .icon,
+.dark .sidebar li a:hover .text {
   color: #ffbe76;
 }
 
