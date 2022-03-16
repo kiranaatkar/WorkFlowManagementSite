@@ -4,17 +4,10 @@ import ProjectDropDown from './ProjectDropDown';
 function SideBarMenu(props) {
   return (
     <div className='menu'>
-      <li
-        className='search-box'
-        onClick={() => props.toggleNavBar('search-box')}>
-        <i className='bx bx-search icon'></i>
-        <input type='text' placeholder='Search...' />
-      </li>
-
       <ul className='menu-links'>
         <li className='nav-link'>
           <Link to='/dashboard'>
-            <i className='bx bx-home-alt icon'></i>
+            <i className='bx bx-grid-alt icon'></i>
             <span className='text nav-text'>Dashboard</span>
           </Link>
         </li>
@@ -32,6 +25,12 @@ function SideBarMenu(props) {
           <a href='#'>
             <i className='bx bx-pie-chart-alt icon'></i>
             <span className='text nav-text'>Analytics</span>
+          </a>
+        </li>
+        <li>
+          <a href='#'>
+            <i className='bx bx-cog icon'></i>
+            <span className='text nav-text'>Settings</span>
           </a>
         </li>
       </ul>
