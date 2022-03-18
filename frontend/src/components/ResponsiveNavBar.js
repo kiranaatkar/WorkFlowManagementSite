@@ -58,11 +58,13 @@ function ResponsiveNavBar(props) {
             <span className='mode-text text dark-mode'>
               {props.darkMode ? 'Light mode' : 'Dark mode'}
             </span>
-            <label class='switch'>
-              <input type='checkbox' checked={props.darkMode ? true : false} />
-              <span
-                class='slider round'
-                onClick={(e) => toggleDarkMode(e)}></span>
+            <label className='switch'>
+              <input
+                type='checkbox'
+                checked={props.darkMode ? true : false}
+                onChange={(e) => toggleDarkMode(e)}
+              />
+              <span className='slider round'></span>
             </label>
           </li>
         </div>

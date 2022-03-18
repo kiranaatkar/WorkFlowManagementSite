@@ -5,6 +5,7 @@ import Networking from './Networking';
 
 function ProjectDropDown(props) {
   const [projects, setProjects] = useState([]);
+  const [showProjects, toggleProjects] = useState(false);
   const myAPI = new Networking();
 
   useEffect(() => {
@@ -21,7 +22,7 @@ function ProjectDropDown(props) {
       return projects.map((project) => (
         <li className='nav-link' key={project.title}>
           <Link to={`/project/${project.title}`} state={{ project: project }}>
-            <span className='text nav-text'>{project.title}</span>
+            <span className='text nav-text project'>{project.title}</span>
           </Link>
         </li>
       ));
@@ -30,20 +31,24 @@ function ProjectDropDown(props) {
     }
   }
 
+  function handleClick() {
+    toggleProjects(!showProjects);
+    props.toggleNavBar('project-btn');
+  }
+
   return (
-    <div className='dropdown'>
-      <li
-        className='nav-link dropdown-btn'
-        onClick={() => props.toggleNavBar('project-btn')}>
+    <div className={`dropdown ${showProjects ? 'show' : ''}`}>
+      <li className='nav-link dropdown-btn' onClick={() => handleClick()}>
         <a href='#'>
           <i className='bx bx-book-content icon'></i>
-          <span className='text nav-text'>Projects</span>
+          <span className='text nav-text project'>Projects</span>
+          <i className='bx bxs-chevron-down arrow icon'></i>
         </a>
       </li>
-      <div className='dropdown-content'>
+      <div className={`dropdown-content`}>
         <li className='nav-link' key='Create-project'>
           <Link to={props.user ? '/createProject' : '/login'}>
-            <span className='text nav-text'>+ Create</span>
+            <span className='text nav-text project'>+ Create</span>
           </Link>
         </li>
         {getProjectsComponentList(projects)}

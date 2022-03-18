@@ -27,13 +27,13 @@ function NewProject() {
               value={task.info}
               onBlur={(e) => handleBlur(e)}></textarea>
             <span className='placeholder'>{`Task ${i + 1}`}</span>
-            <button
-              id={task.id}
-              onClick={(e) => removeTask(e)}
-              className='form-btn'>
-              x
-            </button>
           </label>
+          <button
+            id={task.id}
+            onClick={(e) => removeTask(e)}
+            className='form-btn btn remove-task'>
+            Remove task
+          </button>
         </div>
       );
     });
@@ -131,13 +131,13 @@ function NewProject() {
             <div className='form-btns'>
               <button
                 onClick={(e) => addTask(e)}
-                className='form-btn btn submit'>
+                className='form-btn btn add-task'>
                 Add Task
               </button>
-              <div>
+              <div className='new-project-submit-clear'>
                 <button
                   onClick={(e) => clearFields(e)}
-                  className='form-btn btn submit'>
+                  className='form-btn btn clear-fields'>
                   Clear All
                 </button>
                 <button

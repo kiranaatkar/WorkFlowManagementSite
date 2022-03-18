@@ -1,7 +1,7 @@
 .top-nav-wrapper {
   height: 100px;
-  width: 97%;
-  position: fixed;
+  position: sticky;
+  top: 0;
   flex: 1;
   display: flex;
   justify-content: space-between;
