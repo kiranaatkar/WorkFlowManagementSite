@@ -148,7 +148,7 @@ header .image-text .profession {
   transition: var(--tran-05);
 }
 
-body.dark .sidebar header .toggle {
+.dark .sidebar header .toggle {
   color: rgb(228, 230, 235);
 }
 

@@ -18,17 +18,6 @@
   font-size: xx-large;
 }
 
-.task {
-  display: flex;
-  position: relative;
-}
-
-.task .form-btn {
-  padding: 0;
-  height: 25px;
-  width: 25px;
-}
-
 .form-btn {
   padding: 1rem;
   margin-top: 10px;
@@ -37,8 +26,39 @@
   border-radius: 3px;
 }
 
-/* Dark mode */
+.form-btns {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
 
-.dark .create-project-form-wrapper {
-  background: rgb(36, 37, 38);
+.form-btn.add-task {
+  width: 50%;
+  font-size: smaller;
+  margin: auto;
+}
+
+.form-btn.clear-fields,
+.form-btn.submit {
+  width: 50%;
+  font-size: smaller;
+  margin: 10px;
+}
+
+.new-project-submit-clear {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task .form-btn.remove-task {
+  padding: 0;
+  width: 20%;
+  font-size: smaller;
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
 }

@@ -40,7 +40,7 @@
 }
 
 /* Don't open if sidebar closed */
-.close .dropdown:hover .dropdown-content {
+.close .dropdown.show .dropdown-content {
   display: none;
 }
 
