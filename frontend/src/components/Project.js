@@ -1,27 +1,33 @@
-import "../App.css";
-import Networking from "./Networking";
-import React, { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import '../App.css';
+import Networking from './Networking';
+import React, { useEffect, useState, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Project(props) {
   const location = useLocation();
-  const { project } = location.state;
-  const { id, title, due_date, description } = project;
-  const due = new Date(due_date).toLocaleString().split(", ")[0];
+  const { id, title, due_date, description } = location.state.project;
+  const due = new Date(due_date).toLocaleString().split(', ')[0];
 
   const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(false);
   const myAPI = new Networking();
 
-  const mounted = useRef();
-  useEffect(() => {
-    fetchTasks(id);
-    mounted.current = true;
-  }, [id]); // ComponentDidMount
+  const mounted = useRef(true);
 
-  async function fetchTasks(id) {
-    const json = await myAPI.getProjectTasks(id);
-    setTasks(json.tasks);
-  }
+  //fetch tasks
+  useEffect(() => {
+    if (mounted.current) {
+      setLoading(true);
+      (async () => {
+        const json = await myAPI.getProjectTasks(id);
+        setTasks(json.tasks);
+        setLoading(false);
+      })();
+    }
+    return () => {
+      mounted.current = false;
+    };
+  }, []); // Only fetches data when mounted
 
   function getTaskComponentList(tasks) {
     if (tasks.length) {
@@ -34,9 +40,9 @@ function Project(props) {
   }
 
   return (
-    <div className="project-display">
-      <h1 className="emphasis">{title}</h1>
-      <h6 className="emphasis"> Due: {due}</h6>
+    <div className='project-display'>
+      <h1 className='emphasis'>{title}</h1>
+      <h6 className='emphasis'> Due: {due}</h6>
       <h5>{description}</h5>
 
       <div>{getTaskComponentList(tasks)}</div>

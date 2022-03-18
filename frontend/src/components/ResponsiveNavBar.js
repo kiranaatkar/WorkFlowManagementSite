@@ -9,7 +9,6 @@ import SideBarMenu from './SideBarMenu';
 function ResponsiveNavBar(props) {
   const [navOpen, toggleNav] = useState(false);
   const myAPI = new Networking();
-  console.log(props.darkMode);
 
   function toggleNavBar(origin) {
     if (origin === 'toggle') {

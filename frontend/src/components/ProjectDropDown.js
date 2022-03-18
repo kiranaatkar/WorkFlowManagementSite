@@ -1,21 +1,29 @@
 import './Dropdown.css';
 import { Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Networking from './Networking';
 
 function ProjectDropDown(props) {
   const [projects, setProjects] = useState([]);
   const [showProjects, toggleProjects] = useState(false);
+  const [loading, setLoading] = useState(false);
   const myAPI = new Networking();
 
+  //fetch meta data
+  const mounted = useRef(true);
   useEffect(() => {
-    fetchData();
-  }, []); // ComponentDidMount
-
-  async function fetchData() {
-    const json = await myAPI.getAllProjects();
-    setProjects(json.projects);
-  }
+    if (mounted.current) {
+      setLoading(true);
+      (async () => {
+        const json = await myAPI.getProjectsMetaData();
+        setProjects(json.projects);
+        setLoading(false);
+      })();
+    }
+    return () => {
+      mounted.current = false;
+    };
+  }, []); // Only fetches data when mounted
 
   function getProjectsComponentList(projects) {
     if (projects.length && props.user) {
